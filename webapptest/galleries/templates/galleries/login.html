@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Kirjaudu sisään </h1>
+<div class="form">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Kirjaudu sisään</button>
+    <button type="button"><a href="{% url 'index' %}">Palaa etusivulle</a></button>
+</form>
+</div>
+{%endblock%}

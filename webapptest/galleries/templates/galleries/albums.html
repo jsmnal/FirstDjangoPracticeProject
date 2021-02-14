@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Albumit </h1>
+<div class = "navigate">
+{% if user.is_authenticated %} 
+<button type="button"><a href="{% url 'add_album' %}">Lisää uusi albumi</a></button>
+<button type="button"><a href="{% url 'index' %}">Palaa etusivulle</a></button>
+<button type="button"><a href="{% url 'logout' %}">Kirjaudu ulos</a></button> 
+{% else %}
+<button type="button"><a href="{% url 'login' %}">Kirjaudu sisään</a></button>
+<button type="button"><a href="{% url 'registration' %}">Rekisteröidy</a></button>
+{% endif %}
+</div>
+{% if user.is_authenticated %}
+{% if latest_album_list %}
+    <ul class="album">
+        {% for album in latest_album_list %}
+        <li><a href="{% url 'album' album.slug %}">{{album.album_name}} </br>
+        {% if album.get_latest_image %}
+        <img src="{{album.get_latest_image.image.url}}">
+        {% else %}
+        <div class="empty"> Ei kuvia. </div>
+        {% endif %}
+        </a></li>
+        {% endfor%}
+    </ul>
+    {% else %}
+    <p> Ei albumeita saatavilla.</p>
+    {% endif %}
+    {% else %}
+    <p> Tervetuloa Gallery Test Appiin. Kirjaudu sisälle päästäksesi käyttämään sovellusta. </p>
+    {% endif %}
+
+{%endblock%}

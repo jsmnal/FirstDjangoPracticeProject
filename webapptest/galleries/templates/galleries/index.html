@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Etusivu </h1>
+<div class= "coverimage">
+{% for image in latest_image_list %}
+    <div class = "image fade">
+        <img src="{{image.image.url}}">
+    </div>
+        {% endfor%}
+</div>
+<script src="/static/toiminnot.js"></script>
+<div class = "navigate">
+{% if user.is_authenticated %} 
+<button type="button"><a href="{% url 'logout' %}">Kirjaudu ulos</a></button> 
+<button type="button"><a href="{% url 'albums' %}">Albumit</a></button> 
+{% else %}
+<button type="button"><a href="{% url 'login' %}">Kirjaudu sisään</a></button>
+<button type="button"><a href="{% url 'registration' %}">Rekisteröidy</a></button>
+{% endif %}
+</div>
+    <p> Tervetuloa Gallery Test Appiin. Kirjaudu sisälle päästäksesi käyttämään sovellusta. </p>
+
+
+{%endblock%}

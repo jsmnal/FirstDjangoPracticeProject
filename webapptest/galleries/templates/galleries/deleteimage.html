@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Haluatko varmasti poistaa kuvan? </h1>
+<div class="form">
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit">Poista kuva</button>
+<button type="button"><a href="{% url 'album' album.slug %}">Palaa albumiin</a></button>
+</form>
+</div>
+{%endblock%}

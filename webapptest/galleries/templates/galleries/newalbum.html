@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Lisää albumi</h1>
+<div class="form">
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit">Lisää uusi albumi</button>
+<button type="button"><a href="{% url 'albums' %}">Palaa albumeihin</a></button>
+<button type="button"><a href="{% url 'index' %}">Palaa etusivulle</a></button>
+</form>
+</div>
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="gallery_content">
+<h1> {{ album.album_name}} </h1>
+<div class = "navigate">
+<button type="button"><a href="{% url 'add_image' album.slug %}">Lisää uusi kuva</a></button>
+<button type="button"><a href="{% url 'albums' %}">Palaa albumeihin</a></button>
+<button type="button"><a href="{% url 'index' %}">Palaa etusivulle</a></button>
+<button type="button"><a href="{% url 'logout' %}">Kirjaudu ulos</a></button> 
+</div>
+  <div class="image_area">
+    {% for image in album.image_set.all%}
+    <div class="album_images">
+    <img src="{{ image.image.url }}">
+    <p>{{image.image_description}}</p>
+    <button type="button"><a href="{% url 'delete_image' album.slug image.slug %}">Poista kuva</a></button>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{%endblock%}
