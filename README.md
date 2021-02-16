@@ -9,7 +9,7 @@ A signed-in-user can see the Sign out and Albums buttons. Non-signed-in-users ca
 
 ![](screenshots/Screenshot1.jpg) 
 ### Image view in album
-![](screenshots/screenshot2.jpg)
+![](screenshots/Screenshot2.jpg)
 ### Sign in form
 ![](screenshots/Screenshot3.jpg)
 ### Adding new image form
